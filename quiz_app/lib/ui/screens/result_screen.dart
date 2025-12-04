@@ -27,30 +27,98 @@ class ResultScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Colors.white,
               ),
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 20),
-            
+
+            const SizedBox(height: 40),
             Expanded(
               child: ListView.builder(
                 itemCount: quiz.questions.length,
                 itemBuilder: (context, index) {
                   final q = quiz.questions[index];
-                  final bool correct = quiz.isAnswerCorrect(q.id);
+                  final selectedChoice = quiz.getSelectedChoice(q.id);
+                  final isCorrect = quiz.isAnswerCorrect(q.id);
 
-                  return Card(
-                    color: correct ? Colors.green[100] : Colors.red[100],
-                    child: ListTile(
-                      leading: Icon(correct ? Icons.check_circle : Icons.cancel, color: correct ? Colors.green : Colors.red),
-                      title: Text(q.title, style: const TextStyle(fontWeight: FontWeight.bold)),
-                      subtitle: Text(
-                        "You chose: ${quiz.getSelectedChoice(q.id) ?? "No answer"}\n"
-                        "Correct answer: ${q.correctAnswer}",
+                  return Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 18,
+                            backgroundColor: isCorrect ? Colors.green : Colors.red,
+                            child: Text(
+                              "${index + 1}",
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Text(
+                              q.title,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  );
-                },
-              ),
+
+                      const SizedBox(height: 16),
+
+                      ...q.choices.map((choice) {
+                        final bool isSelected = selectedChoice == choice;
+                        final bool isCorrectAnswer = choice == q.correctAnswer;
+
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 6),
+                          child: Row(
+                            children: [
+                              if (isCorrectAnswer)
+                                const Icon(Icons.check, color: Colors.green, size: 28),
+
+                              if (isSelected && !isCorrectAnswer)
+                                const Icon(Icons.close, color: Colors.red, size: 28),
+
+                              if (!isCorrectAnswer && !(isSelected && !isCorrectAnswer))
+                                const SizedBox(width: 28),
+
+                              const SizedBox(width: 12),
+
+                              Expanded(
+                                child: Text(
+                                  choice,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: isSelected || isCorrectAnswer
+                                        ? FontWeight.bold
+                                        : FontWeight.normal,
+                                    color: isCorrectAnswer
+                                        ? Colors.green.shade800
+                                        : isSelected && !isCorrectAnswer
+                                            ? Colors.red.shade800
+                                            : Colors.black87,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ],
+                  ),
+                );
+              },
             ),
+          ),
       
           const SizedBox(height: 40),
           ElevatedButton(

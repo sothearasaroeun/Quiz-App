@@ -27,7 +27,9 @@ class QuestionScreen extends StatelessWidget {
             question.title,
             style: const TextStyle(
               fontSize: 24,
-              fontWeight: FontWeight.bold),
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              ),
               textAlign: TextAlign.center,
           ),
           const SizedBox(height: 20),

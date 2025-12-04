@@ -20,21 +20,12 @@ class ChoiceButton extends StatelessWidget {
   Widget build(BuildContext context) {
     Color backgroundColor = Colors.white;
     Color textColor = Colors.blueGrey;
-    // Border? border;
     if (isCorrect && isSelected) {
       backgroundColor = Colors.green;
       textColor = Colors.green;
-      // border = Border.all(
-      //   color: Colors.green,
-      //   width: 2,
-      // );
     } else if (isWrong && isSelected) {
       backgroundColor = Colors.red;
       textColor = Colors.red;
-      // border = Border.all(
-      //   color: Colors.redAccent,
-      //   width: 2,
-      // );
     }
 
     return Padding(
@@ -49,7 +40,6 @@ class ChoiceButton extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 20),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
-                //side: border ?? BorderSide.none,
               ),
               elevation: 4,
               shadowColor: Colors.black26,
