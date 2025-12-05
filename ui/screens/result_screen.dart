@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../model/quiz.dart';
-<<<<<<< HEAD
 import '../widgets/app_button.dart';
-=======
->>>>>>> c90680ebb6bc4c09ec7509e4032600e8985b3f76
 
 class ResultScreen extends StatelessWidget {
   final Quiz quiz;
@@ -125,29 +122,9 @@ class ResultScreen extends StatelessWidget {
           ),
       
           const SizedBox(height: 40),
-<<<<<<< HEAD
           AppButton(
             text: 'Restart Quiz',
             onPressed: onBackToStart,
-=======
-          ElevatedButton(
-            onPressed: onBackToStart,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 8,
-            ),
-            child: const Text(
-              "Restart Quiz", 
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
->>>>>>> c90680ebb6bc4c09ec7509e4032600e8985b3f76
           ),
         ],
       ),);

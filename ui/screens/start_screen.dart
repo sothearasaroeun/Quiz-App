@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import '../widgets/app_button.dart';
-=======
->>>>>>> c90680ebb6bc4c09ec7509e4032600e8985b3f76
 
 class StartScreen extends StatelessWidget {
   final VoidCallback onStart;
@@ -17,30 +14,9 @@ class StartScreen extends StatelessWidget {
         children: [
 
           const SizedBox(height: 40),
-<<<<<<< HEAD
           AppButton(
             text: 'Start Quiz',
             onPressed: onStart,
-=======
-          ElevatedButton(
-            onPressed: onStart,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 8,
-            ),
-            child: const Text(
-              "Start Quiz", 
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.blueGrey,
-              ),
-            ),
->>>>>>> c90680ebb6bc4c09ec7509e4032600e8985b3f76
           ),
         ],
       ),
